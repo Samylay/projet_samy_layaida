@@ -1,4 +1,4 @@
-package com.proxibank.entity;
+package com.proxibank.projet_samy_layaida.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -15,7 +15,7 @@ import java.util.List;
 public class Conseiller extends Employe {
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "agence_id")
+    @JoinColumn(name = "agence_id", nullable = false)
     private Agence agence;
 
     @OneToMany(mappedBy = "conseiller", cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.LAZY)
@@ -23,5 +23,11 @@ public class Conseiller extends Employe {
 
     public boolean canAddClient() {
         return this.clients.size() < 10;
+    }
+    public void addClient(Client client) {
+        this.clients.add(client);
+    }
+    public void removeClient(Client client) {
+        this.clients.remove(client);
     }
 }

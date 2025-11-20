@@ -1,4 +1,4 @@
-package com.proxibank.entity;
+package com.proxibank.projet_samy_layaida.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -23,6 +23,12 @@ public class Agence {
     @OneToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "gerant_id")
     private Gerant gerant;
+
+    public Agence(String id, Gerant gerant) {
+        this.id = id;
+        this.gerant = gerant;
+        this.dateCreation = LocalDate.now();
+    }
 
     @OneToMany(mappedBy = "agence", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Conseiller> conseillers = new ArrayList<>();

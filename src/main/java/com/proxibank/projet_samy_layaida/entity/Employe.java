@@ -1,4 +1,4 @@
-package com.proxibank.entity;
+package com.proxibank.projet_samy_layaida.entity;
 
 import jakarta.persistence.*;
 import lombok.Getter;
